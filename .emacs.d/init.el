@@ -2,7 +2,7 @@
 ;; add load-path.
 ;;
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/coffee-mode")
+(add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
 
 ;;
 ;; load other files.
