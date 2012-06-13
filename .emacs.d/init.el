@@ -139,7 +139,6 @@
 ;; coffee-mode settings.
 ;;
 
-(add-to-list 'load-path "~/.emacs.d/coffee-mode")
 (when (require 'coffee-mode nil t)
   (defun coffee-custom ()
     "coffee-mode-hook"
