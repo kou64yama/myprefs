@@ -2,7 +2,7 @@
 
 # detect the color terminal.
 case "${TERM}" in
-    xterm-*color|screen-*color|rxvt*)
+    linux|xterm-*color|screen-*color|rxvt*)
         color_prompt=yes;;
 esac
 
