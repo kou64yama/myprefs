@@ -1,13 +1,3 @@
-;;
-;; add load-path.
-;;
-
-(add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
-
-;;
-;; load other files.
-;;
-
 ;; (let* ((dir "~/.emacs.d/init.d")
 ;;        (el-suffix "\\.el\\'")
 ;;        (files (mapcar (lambda (path) (replace-regexp-in-string el-suffix "" path))
@@ -139,6 +129,7 @@
 ;; coffee-mode settings.
 ;;
 
+(add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
 (when (require 'coffee-mode nil t)
   (defun coffee-custom ()
     "coffee-mode-hook"
@@ -162,3 +153,14 @@
 ;;
 
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
+
+;;
+;; twittering-mode settings.
+;;
+
+(add-to-list 'load-path "~/.emacs.d/vendor/twittering-mode")
+(when (require 'twittering-mode nil t)
+  (setq twittering-auth-method 'xauth)
+  (setq twittering-username "kou64yama")
+  (setq twittering-icon-mode t)
+  )
