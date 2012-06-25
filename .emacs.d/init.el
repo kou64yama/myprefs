@@ -9,6 +9,7 @@
 ;;
 
 (custom-set-variables
+ '(visible-bell t)
  '(c-basic-offset 4)
  '(backup-inhibited t)
  '(indent-tabs-mode nil)
@@ -64,6 +65,7 @@
  ((window-system)
   (custom-set-faces
    '(default ((t :foreground "#cfcfcf" :background "#303030" :family "Inconsolata" :height 140)))
+   '(cursor ((t :foreground "#303030" :background "#cfcfcf")))
    '(fringe ((t :background "#303030")))
    '(minibuffer-prompt ((t :foreground "#6095c5")))
    '(mode-line ((t :foreground "#cfcfcf" :background "#6095c5")))
