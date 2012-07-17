@@ -64,6 +64,7 @@
  ((window-system)
   (custom-set-faces
    '(default ((t :foreground "#cfcfcf" :background "#303030" :family "Inconsolata" :height 140)))
+   '(cursor ((t :foreground "#303030" :background "#cfcfcf")))
    '(fringe ((t :background "#303030")))
    '(minibuffer-prompt ((t :foreground "#6095c5")))
    '(mode-line ((t :foreground "#cfcfcf" :background "#6095c5")))
