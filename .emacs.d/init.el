@@ -9,6 +9,7 @@
 ;;
 
 (custom-set-variables
+ '(visible-bell t)
  '(c-basic-offset 4)
  '(backup-inhibited t)
  '(indent-tabs-mode nil)
