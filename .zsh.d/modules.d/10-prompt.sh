@@ -8,7 +8,7 @@ esac
 
 if [ "${color_prompt}" ]; then
 
-    case `name` in
+    case `uname` in
         Linux)
             alias ls="ls --color=auto";;
         FreeBSD)
