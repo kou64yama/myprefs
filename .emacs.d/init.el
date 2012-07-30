@@ -116,16 +116,16 @@
 ;; auto-complete-mode settings.
 ;;
 
-(when (require 'auto-complete nil t)
-  (add-to-list 'ac-modes 'emacs-lisp)
-  (add-to-list 'ac-modes 'c-mode)
-  (add-to-list 'ac-modes 'c++-mode)
-  (add-to-list 'ac-modes 'java-mode)
-  (add-to-list 'ac-modes 'javascript-mode)
-  (add-to-list 'ac-modes 'haskell-mode)
-  (add-to-list 'ac-modes 'coffee-mode)
-  (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
-  (global-auto-complete-mode t))
+;; (when (require 'auto-complete nil t)
+;;   (add-to-list 'ac-modes 'emacs-lisp)
+;;   (add-to-list 'ac-modes 'c-mode)
+;;   (add-to-list 'ac-modes 'c++-mode)
+;;   (add-to-list 'ac-modes 'java-mode)
+;;   (add-to-list 'ac-modes 'javascript-mode)
+;;   (add-to-list 'ac-modes 'haskell-mode)
+;;   (add-to-list 'ac-modes 'coffee-mode)
+;;   (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+;;   (global-auto-complete-mode t))
 
 ;;
 ;; coffee-mode settings.
@@ -166,3 +166,23 @@
   (setq twittering-username "kou64yama")
   (setq twittering-icon-mode t)
   )
+
+;;
+;; CEDET
+;;
+(setq semantic-default-submodes
+      '(global-semantic-idle-scheduler-mode
+        global-semantic-idle-completions-mode
+        global-semanticdb-minor-mode
+        global-semantic-decoration-mode
+        global-semantic-highlight-func-mode
+        global-semantic-stickyfunc-mode
+        global-semantic-mru-bookmark-mode
+        ))
+
+;;
+;; JDEE
+;;
+
+(setq jde-jdk-registry '(("1.7" . "/usr/lib/jvm/icedtea-7/")))
+(setq jde-jdk '("1.7"))
