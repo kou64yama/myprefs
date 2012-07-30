@@ -9,7 +9,7 @@ esac
 if [ "${color_prompt}" ]; then
 
     case `uname` in
-        Linux)
+        Linux|Darwin)
             alias ls="ls --color=auto";;
         FreeBSD)
             alias ls="ls -G";;
