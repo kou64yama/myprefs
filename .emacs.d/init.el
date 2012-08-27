@@ -9,17 +9,22 @@
 ;;
 
 (custom-set-variables
- '(visible-bell t)
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(backup-inhibited t t)
  '(c-basic-offset 4)
- '(backup-inhibited t)
+ '(column-number-mode t)
+ '(ede-project-directories (quote ("/home/sigma/work/test")))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(column-number-mode t)
  '(menu-bar-mode nil)
- '(tool-bar-mode nil)
  '(scroll-bar-mode nil)
  '(scroll-margin 0)
- '(scroll-step 1))
+ '(scroll-step 1)
+ '(tool-bar-mode nil)
+ '(visible-bell t))
 
 ;;
 ;; faces.
@@ -166,3 +171,11 @@
   (setq twittering-username "kou64yama")
   (setq twittering-icon-mode t)
   )
+
+;;
+;; CEDET
+;;
+
+;;(load-library "cedet")
+(global-ede-mode 1)
+(semantic-mode 1)
