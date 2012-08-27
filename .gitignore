@@ -4,3 +4,7 @@
 .emacs.d/semanticdb
 .emacs.d/vendor/*
 .emacs.d/tramp
+.xmonad/xmonad-*
+.xmonad/xmonad.errors
+.xmonad/xmonad.hi
+.xmonad/xmonad.o
