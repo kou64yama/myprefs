@@ -8,7 +8,12 @@ esac
 
 if [ "${color_prompt}" ]; then
 
-    alias ls="ls --color=auto"
+    case `uname` in
+        Linux|Darwin)
+            alias ls="ls --color=auto";;
+        FreeBSD)
+            alias ls="ls -G";;
+    esac
     alias grep="grep --color=auto"
     alias fgrep="fgrep --color=auto"
     alias egrep="egrep --color=auto"
