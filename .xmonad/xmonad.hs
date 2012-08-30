@@ -189,7 +189,7 @@ main = xmonad =<< myDzen defaultConfig
       -- The available layouts. Note that each layout is separated by |||, which
       -- denotes layout choice.
       myLayout = smartBorders (toggleLayouts Full (tail ||| mirror))
-          where tail = Tall 1 0.1 0.7
+          where tail = Tall 1 0.1 0.6
                 mirror = Mirror tail
 
       -- Whether focus follows the mouse pointer
