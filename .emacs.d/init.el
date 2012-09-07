@@ -198,3 +198,8 @@
 ;; (setq jde-jdk-registry '(("1.7" . "/usr/lib/jvm/icedtea-7/")))
 ;; (setq jde-jdk '("1.7"))
 ;; >>>>>>> 64802216a957bde106def1b437fa12235417c546
+
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (c-set-offset 'innamespace 0)
+             ))
