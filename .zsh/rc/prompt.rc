@@ -1,0 +1,35 @@
+# VCS
+autoload -U vcs_info
+zstyle ':vcs_info:*' formats ' (%s:%b)'
+zstyle ':vcs_info:*' actionformats ' (%s:%b %a)'
+
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n $vcs_info_msg_0_ ]] && psvar[1]=$vcs_info_msg_0_
+}
+
+tty="%y"
+hosts="%n@%M"
+rhosts=$hosts
+cpath="%c"
+date="%D %T"
+dpath="%d"
+vcs="%1v"
+
+case $TERM in
+    *color)
+        tty="%F{yellow}%B$tty%b%f"
+        hosts="%F{green}%B$hosts%b%f"
+        rhosts="%F{red}%B$rhosts%b%f"
+        cpath="%F{blue}%B$cpath%b%f"
+        date="%F{cyan}%B$date%b%f"
+        dpath="%F{blue}$dpath%f"
+        vcs="%F{magenta}%B$vcs%b%f"
+        ;;
+esac
+
+PROMPT="$date $tty $hosts $cpath
+%# "
+RPROMPT="[$dpath$vcs]"
+PROMPT2=""
