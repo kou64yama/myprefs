@@ -1,12 +1,20 @@
 # VCS
 autoload -U vcs_info
-zstyle ':vcs_info:*' formats '.%s:%b'
-zstyle ':vcs_info:*' actionformats '.%s:%b (%a)'
+
+zstyle ':vcs_info:*' max-exports 4
+zstyle ':vcs_info:*' formats '%s::' '%r' '-%b' ':%S'
+zstyle ':vcs_info:*' actionformats '%s' '%r' '%b' '%S' '%a'
 
 precmd () {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
-    [[ -n $vcs_info_msg_0_ ]] && psvar[1]=$vcs_info_msg_0_
+    if [ -n $vcs_info_msg_0_ ]; then
+        psvar[1]=$vcs_info_msg_0_
+        psvar[2]=$vcs_info_msg_1_
+        psvar[3]=$vcs_info_msg_2_
+        psvar[4]=$vcs_info_msg_3_
+        psvar[5]=$vcs_info_msg_4_
+    fi
 }
 
 tty="%y"
@@ -14,18 +22,25 @@ hosts="%n@%M"
 rhosts=$hosts
 dpath="%d"
 cpath="%c"
-vcs="%1v"
 date="%D %T"
+vcs="%1v"
+repo="%2v"
+branch="%3v"
+vpath="%4v"
+action="%5v"
 
 case $TERM in
     *color)
-        tty="%F{yellow}%B$tty%b%f"
+        tty="%F{yellow}$tty%f"
         hosts="%F{green}$hosts%f"
-        rhosts="%F{red}%U$rhosts%u%f"
+        rhosts="%F{red}%U%B$rhosts%b%u%f"
         dpath="%F{blue}%B$dpath%b%f"
         cpath="%F{blue}$cpath%f"
-        vcs="%F{magenta}%B$vcs%b%f"
         date="%F{cyan}$date%f"
+        vcs="%F{green}%B$vcs%b%f"
+        repo="%F{magenta}%B$repo%b%f"
+        branch="%F{cyan}%B$branch%b%f"
+        vpath="%F{blue}$vpath%f"
         ;;
 esac
 
@@ -33,7 +48,11 @@ if [ $USER = "root" ]; then
     hosts=$rhosts
 fi
 
-PROMPT="$tty $hosts $dpath
-$cpath$vcs%# "
-RPROMPT="[$date]"
+prompt_vcs() {
+    print $repo.$vcs
+}
+
+PROMPT="$hosts:$dpath
+$vcs$repo$branch$vpath$action%# "
+RPROMPT="[$tty $date]"
 PROMPT2=""
