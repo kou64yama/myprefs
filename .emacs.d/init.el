@@ -1,6 +1,7 @@
 ;;
 (add-to-list 'load-path "~/.emacs.d/site-lisp/coffee-mode")
-(load "~/.emacs.d/site-lisp/tomorrow-theme/tomorrow-night-theme.el")
+;; (load "~/.emacs.d/site-lisp/tomorrow-theme/tomorrow-night-theme.el")
+(load "~/.emacs.d/site-lisp/tomorrow-theme/tomorrow-night-eighties-theme.el")
 
 ;;
 (custom-set-variables

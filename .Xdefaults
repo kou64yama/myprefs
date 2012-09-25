@@ -1,39 +1,26 @@
-!!
-!! File: $HOME/.Xdefaults
-!! Author: Koji Yamada
-!! 
+!! Author: Koji Yamada <kou64yama@gmail.com>
 
 !! URxvt
 URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/terminal.svg
-!!URxvt.font: xft: Ubuntu Mono:size=14, xft: Droid Sans Japanese
-URxvt.font: xft: Inconsolata:size=14, xft: Ricty:size=13
+URxvt.font: xft: Droid Sans Mono:size=14, xft: Droid Sans Japanese
+!URxvt.font: xft: Inconsolata:size=14, xft: Ricty:size=13
 URxvt.scrollBar: false
 
-!! URxvt Color
-URxvt.foreground: #cfcfcf
-URxvt.background: #303030
-
-!! Black
-URxvt.color0:  #303030
-URxvt.color8:  #686868
-!! Red
-URxvt.color1:  #d370a3
-URxvt.color9:  #ffa7da
-!! Green
-URxvt.color2:  #6d9e3f
-URxvt.color10: #a3d572
-!! Yellow
-URxvt.color3:  #b58858
-URxvt.color11: #efbd8b
-!! Blue
-URxvt.color4:  #6095c5
-URxvt.color12: #98cbfe
-!! Magenta
-URxvt.color5:  #ac7bde
-URxvt.color13: #e5b0ff
-!! Cyan
-URxvt.color6:  #3ba275
-URxvt.color14: #75daa9
-!! White
-URxvt.color7:  #cfcfcf
-URxvt.color15: #ffffff
+URxvt.background: #2d2d2d
+URxvt.foreground: #cccccc
+URxvt.color0:     #2d2d2d
+URxvt.color1:     #f2777a
+URxvt.color2:     #99cc99
+URxvt.color3:     #ffcc66
+URxvt.color4:     #6699cc
+URxvt.color5:     #cc99cc
+URxvt.color6:     #66cccc
+URxvt.color7:     #cccccc
+URxvt.color8:     #2d2d2d
+URxvt.color9:     #f2777a
+URxvt.color10:    #99cc99
+URxvt.color11:    #ffcc66
+URxvt.color12:    #6699cc
+URxvt.color13:    #cc99cc
+URxvt.color14:    #66cccc
+URxvt.color15:    #cccccc

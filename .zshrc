@@ -5,6 +5,7 @@
 
 fpath=($HOME/.zsh/functions $fpath)
 eval `dircolors $HOME/.zsh/colors`
+umask 077
 
 autoload -U zutil
 autoload -U compinit && compinit
