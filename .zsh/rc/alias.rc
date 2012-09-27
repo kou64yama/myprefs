@@ -1,5 +1,11 @@
-alias mydf='df -hPT | column -t'
-alias ls='ls --color=auto'
+# -*- shell-script -*-
+
+if [ $SHELL = $HOME/Gentoo/bin/zsh ]; then
+    alias ls='ls --color=auto'
+else
+    alias ls='ls -G'
+fi
+
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'

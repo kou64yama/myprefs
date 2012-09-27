@@ -1,3 +1,5 @@
+# -*- shell-script -*-
+
 # VCS
 autoload -U vcs_info
 

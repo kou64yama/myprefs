@@ -4,8 +4,14 @@
 # Written since Sep 2012
 
 fpath=($HOME/.zsh/functions $fpath)
-eval `dircolors $HOME/.zsh/colors`
-umask 077
+
+if [ $SHELL = $HOME/Gentoo/bin/zsh ]; then
+    eval `dircolors $HOME/.zsh/colors`
+fi
+
+if [ $USER != "root" ]; then
+    umask 077
+fi
 
 autoload -U zutil
 autoload -U compinit && compinit
