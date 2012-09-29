@@ -1,7 +1,6 @@
 ;;
 (add-to-list 'load-path "~/.emacs.d/site-lisp/coffee-mode")
-;; (load "~/.emacs.d/site-lisp/tomorrow-theme/tomorrow-night-theme.el")
-(load "~/.emacs.d/site-lisp/tomorrow-theme/tomorrow-night-eighties-theme.el")
+(load "~/.emacs.d/site-lisp/tomorrow-theme/tomorrow-night-theme.el")
 
 ;;
 (custom-set-variables
@@ -61,3 +60,10 @@
                (set (make-local-variable 'tab-width) 4)
                (setq coffee-tab-width 4)))
   )
+
+;; markdown-mode.
+(when (require 'markdown-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+  )
+
+(add-to-list 'auto-mode-alist '("\\.rc\\'" . shell-script-mode))

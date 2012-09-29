@@ -31,20 +31,18 @@ branch="%3v"
 vpath="%4v"
 action="%5v"
 
-case $TERM in
-    *color)
-        tty="%F{yellow}$tty%f"
-        hosts="%F{green}$hosts%f"
-        rhosts="%F{red}%U%B$rhosts%b%u%f"
-        dpath="%F{blue}%B$dpath%b%f"
-        cpath="%F{blue}$cpath%f"
-        date="%F{cyan}$date%f"
-        vcs="%F{green}%B$vcs%b%f"
-        repo="%F{magenta}%B$repo%b%f"
-        branch="%F{cyan}%B$branch%b%f"
-        vpath="%F{blue}$vpath%f"
-        ;;
-esac
+if [[ $TERM =~ $color_prompt ]]; then
+    tty="%F{yellow}$tty%f"
+    hosts="%F{green}$hosts%f"
+    rhosts="%F{red}%U%B$rhosts%b%u%f"
+    dpath="%F{blue}%B$dpath%b%f"
+    cpath="%F{blue}$cpath%f"
+    date="%F{cyan}$date%f"
+    vcs="%F{green}%B$vcs%b%f"
+    repo="%F{magenta}%B$repo%b%f"
+    branch="%F{cyan}%B$branch%b%f"
+    vpath="%F{blue}$vpath%f"
+fi
 
 if [ $USER = "root" ]; then
     hosts=$rhosts

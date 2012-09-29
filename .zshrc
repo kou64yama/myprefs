@@ -26,6 +26,8 @@ bindkey '^N' history-beginning-search-forward-end
 bindkey '^P' history-beginning-search-backward-end
 
 # Resource files
+color_prompt="(linux|.*color)"
 for file in $HOME/.zsh/rc/*.rc; do
     source $file
 done
+unset file color_prompt

@@ -1,11 +1,12 @@
 # -*- shell-script -*-
 
-if [ $SHELL = $HOME/Gentoo/bin/zsh ]; then
-    alias ls='ls --color=auto'
-else
-    alias ls='ls -G'
+if [[ $TERM =~ $color_prompt ]]; then
+    if [ $SHELL = $HOME/Gentoo/bin/zsh ]; then
+        alias ls='ls --color=auto'
+    else
+        alias ls='ls -G'
+    fi
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
-
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
