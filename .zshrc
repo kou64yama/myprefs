@@ -9,7 +9,9 @@ if [ $SHELL = $HOME/Gentoo/bin/zsh ]; then
     eval `dircolors $HOME/.zsh/colors`
 fi
 
-if [ $USER != "root" ]; then
+if [ $USER = "root" ]; then
+    umask 022
+else
     umask 077
 fi
 
