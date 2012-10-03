@@ -175,9 +175,9 @@ main = xmonad =<< myDzen defaultConfig
             ]
 
             ++
-            [ ((0, xF86XK_AudioLowerVolume), spawn "~/.xmonad/bin/voldown.sh")
-            , ((0, xF86XK_AudioRaiseVolume), spawn "~/.xmonad/bin/volup.sh")
-            , ((0, xF86XK_AudioMute),        spawn "~/.xmonad/bin/volmute.sh")
+            [ ((0, xF86XK_AudioLowerVolume), spawn "~/.xmonad/bin/volctrl.sh -d1")
+            , ((0, xF86XK_AudioRaiseVolume), spawn "~/.xmonad/bin/volctrl.sh -i1")
+            , ((0, xF86XK_AudioMute),        spawn "~/.xmonad/bin/volctrl.sh -m")
             ]
       -- Layouts:
       --
