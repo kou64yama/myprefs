@@ -16,7 +16,7 @@
 
 ;;
 (custom-set-faces
- '(default ((t :family "Droid Sans Mono" :height 120)))
+ '(default ((t :family "Droid Sans Mono" :height 100)))
 )
 
 ;;
