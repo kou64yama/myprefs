@@ -21,6 +21,7 @@ __main__() {
 
 usage() {
     echo "Usage: ${0##.*/} [option] target..."
+    echo "Targets: zsh tmux emacs xdefaults fontconfig gtkrc xmonad"
 }
 
 usage_exit() {
@@ -42,11 +43,13 @@ install_targets() {
 
     for i in "$@"; do
         case $i in
-            emacs) files="$files .emacs.d";;
             zsh) files="$files .zshrc .zsh";;
-            xmonad) files="$files .xmonad";;
             tmux) files="$files .tmux.conf";;
+            emacs) files="$files .emacs.d";;
+            xdefaults) files="$files .Xdefaults";;
+            fontconfig) files="$files .fonts.conf";;
             gtkrc) files="$files .gtkrc-2.0";;
+            xmonad) files="$files .xmonad";;
             *) usage_exit 2 "$i is unknown target";;
         esac
     done
