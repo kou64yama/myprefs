@@ -46,6 +46,7 @@ install_targets() {
             zsh) files="$files .zshrc .zsh";;
             xmonad) files="$files .xmonad";;
             tmux) files="$files .tmux.conf";;
+            gtkrc) files="$files .gtkrc-2.0";;
             *) usage_exit 2 "$i is unknown target";;
         esac
     done

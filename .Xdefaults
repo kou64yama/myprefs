@@ -1,8 +1,8 @@
 !! Author: Koji Yamada <kou64yama@gmail.com>
 
 !! URxvt
-URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/terminal.svg
-URxvt.font: xft: Droid Sans Mono:size=14, xft: Droid Sans Japanese
+!URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/terminal.svg
+URxvt.font: xft: Droid Sans Mono:size=10, xft: Droid Sans Japanese
 !URxvt.font: xft: Inconsolata:size=14, xft: Ricty:size=13
 URxvt.scrollBar: false
 
