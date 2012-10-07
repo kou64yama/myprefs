@@ -22,6 +22,7 @@ precmd () {
 tty="%y"
 hosts="%n@%M"
 rhosts=$hosts
+client="from ${SSH_CLIENT%% *}"
 dpath="%d"
 cpath="%c"
 date="%D %T"
@@ -35,6 +36,7 @@ if [[ $TERM =~ $color_prompt ]]; then
     tty="%F{yellow}$tty%f"
     hosts="%F{green}$hosts%f"
     rhosts="%F{red}%U%B$rhosts%b%u%f"
+    client="%F{yellow}$client%f"
     dpath="%F{blue}%B$dpath%b%f"
     cpath="%F{blue}$cpath%f"
     date="%F{cyan}$date%f"
@@ -48,6 +50,10 @@ if [ $USER = "root" ]; then
     hosts=$rhosts
 fi
 
+if [ $SSH_CLIENT ]; then
+    hosts="$hosts $client"
+fi
+
 prompt_vcs() {
     print $repo.$vcs
 }
@@ -56,3 +62,5 @@ PROMPT="$hosts:$dpath
 $vcs$repo$branch$vpath$action%# "
 RPROMPT="[$tty $date]"
 PROMPT2=""
+
+unset tty hosts rhosts client dpath cpath date vcs repo branch vpath action
