@@ -9,12 +9,6 @@ if [ $SHELL = $HOME/Gentoo/bin/zsh ]; then
     eval `dircolors $HOME/.zsh/colors`
 fi
 
-if [ $USER = "root" ]; then
-    umask 022
-else
-    umask 077
-fi
-
 autoload -U zutil
 autoload -U compinit && compinit
 autoload -U complist
