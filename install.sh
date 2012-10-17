@@ -3,12 +3,34 @@
 pretend="no"
 rsync_command="rsync -av"
 
+targets_list=("
+emacs
+fontconfig
+gtkrc
+tmux
+xdefaults
+xmonad
+zsh
+")
+
+declare -A targets_files
+targets_files=(
+    ["emacs"]=".emacs.d"
+    ["fontconfig"]=".fonts.conf"
+    ["gtkrc"]=".gtkrc-2.0"
+    ["tmux"]=".tmux.conf"
+    ["xdefaults"]=".Xdefaults"
+    ["xmonad"]=".xmonad"
+    ["zsh"]=".zsh .zshrc .zlogout .zprofile"
+)
+
 __main__() {
 
-    while getopts ph OPTCHR "$@"; do
+    while getopts hlp OPTCHR "$@"; do
         case $OPTCHR in
-            p) rsync_command="$rsync_command --list-only";;
             h) usage_exit 0;;
+            l) print_targets_list && exit 0;;
+            p) rsync_command="$rsync_command --list-only";;
         esac
     done
 
@@ -21,7 +43,14 @@ __main__() {
 
 usage() {
     echo "Usage: ${0##.*/} [option] target..."
-    echo "Targets: zsh tmux emacs xdefaults fontconfig gtkrc xmonad"
+    echo "Targets:"
+    for i in $targets_list; do
+        echo "    $i: ${targets_files[$i]}"
+    done
+}
+
+print_targets_list() {
+    echo $targets_list
 }
 
 usage_exit() {
@@ -42,16 +71,7 @@ install_targets() {
     local files
 
     for i in "$@"; do
-        case $i in
-            zsh) files="$files .zshrc .zsh";;
-            tmux) files="$files .tmux.conf";;
-            emacs) files="$files .emacs.d";;
-            xdefaults) files="$files .Xdefaults";;
-            fontconfig) files="$files .fonts.conf";;
-            gtkrc) files="$files .gtkrc-2.0";;
-            xmonad) files="$files .xmonad";;
-            *) usage_exit 2 "$i is unknown target";;
-        esac
+        files="$files ${targets_files[$i]}"
     done
 
     $rsync_command $files $HOME
