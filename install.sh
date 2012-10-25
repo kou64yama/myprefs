@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 pretend="no"
 rsync_command="rsync -av"

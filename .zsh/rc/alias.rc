@@ -1,7 +1,11 @@
 # -*- shell-script -*-
 
 if [[ $TERM =~ $color_prompt ]]; then
-    alias ls='ls --color=auto'
+    if [ /bin/ls --color=auto > /dev/null 2>&1 ]; then
+        alias ls='/bin/ls --color=auto'
+    else
+        alias ls='/bin/ls -G'
+    fi
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'

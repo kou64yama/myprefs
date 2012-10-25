@@ -1,0 +1,4 @@
+# show sessions.
+if [ `which tmux` > /dev/null 2>&1 ]; then
+    tmux list-sessions 2> /dev/null
+fi

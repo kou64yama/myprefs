@@ -22,8 +22,9 @@ bindkey '^N' history-beginning-search-forward-end
 bindkey '^P' history-beginning-search-backward-end
 
 # Resource files
-color_prompt="^(linux|screen|.*color|rxvt.*)$"
+color_prompt="^(linux|screen|xterm.*|.*color|rxvt.*)$"
+wchar_prompt="^(screen|xterm.*|rxvt.*)$"
 for file in $HOME/.zsh/rc/*.rc; do
     source $file
 done
-unset file color_prompt
+unset file color_prompt wchar_prompt
