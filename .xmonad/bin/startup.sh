@@ -1,4 +1,5 @@
 #!/bin/sh
 
-hsetroot -fill /usr/share/backgrounds/gentoo10/wider/1920x1080/blue.jpg
+hsetroot -fill /usr/share/backgrounds/constantine/default/wide/constantine.png
+imsettings-switch -x
 xcompmgr &
