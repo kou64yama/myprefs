@@ -30,28 +30,38 @@ main = xmonad =<< dzenWithPP myDzenPP defaultConfig
   , focusFollowsMouse  = myFocusFollowsMouse
   }
 
-dzenWithPP pp conf = statusBar ("dzen2 " ++ flags) pp toggleStrutsKey conf
+dzenWithPP pp conf = statusBar ("~/.xmonad/bin/statusbar.sh " ++ flags) pp toggleStrutsKey conf
   where toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
         toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b)
-        flags = "-e 'onstart=lower' -ta l -fg '#999999' -bg '#2d2d2d'"
+        flags = "-e 'onstart=lower' -fg '#999999' -bg '#2d2d2d'"
 
 myDzenPP = dzenPP
-  { ppCurrent         = dzenColor "#2d2d2d" "#999999" . pad
+  { ppCurrent         = dzenColor "#cc6600" "#2d2d2d" . pad
   , ppVisible         = dzenColor "" "" . pad
-  , ppHidden          = dzenColor "" "" . pad
-  , ppHiddenNoWindows = const ""
+  , ppHidden          = dzenColor "#999999" "#2d2d2d" . pad
+  , ppHiddenNoWindows = dzenColor "#666666" "#2d2d2d" . pad
   , ppUrgent          = dzenColor "" "" . pad
   , ppWsSep           = ""
   , ppSep             = ""
-  , ppLayout          = dzenColor "#2d2d2d" "#666666" .
-                        (\ x -> pad $ case x of
-                            "Tall"        -> "^i(.xmonad/icons/tall.xbm)"
-                            "Mirror Tall" -> "^i(.xmonad/icons/mtall.xbm)"
-                            "Full"        -> "^i(.xmonad/icons/full.xbm)"
-                            _             -> x
-                        )
-  , ppTitle           = (" " ++) . dzenEscape
+  , ppLayout          = dzenColor "" "#444444" . pad . layout
+  , ppTitle           = dzenEscape . pad
   }
+  where layout x = case x of
+          "Tall"        -> unwords [ dzenColor "#cc6633" "" tall
+                                   , dzenColor "#333333" "" mtall
+                                   , dzenColor "#333333" "" full
+                                   ]
+          "Mirror Tall" -> unwords [ dzenColor "#333333" "" tall
+                                   , dzenColor "#cc6633" "" mtall
+                                   , dzenColor "#333333" "" full
+                                   ]
+          "Full"        -> unwords [ dzenColor "#333333" "" tall
+                                   , dzenColor "#333333" "" mtall
+                                   , dzenColor "#cc6633" "" full
+                                   ]
+        tall   = "^i(.xmonad/icons/tall.xbm)"
+        mtall  = "^i(.xmonad/icons/mtall.xbm)"
+        full   = "^i(.xmonad/icons/full.xbm)"
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = ["1.TERM", "2.WEB"] ++ map show [3 .. 9 :: Int]
@@ -63,8 +73,8 @@ myBorderWidth :: Dimension
 myBorderWidth = 1
 
 myNormalBorderColor, myFocusedBorderColor :: String
-myNormalBorderColor = "#2d2d2d"
-myFocusedBorderColor = "#3366cc"
+myNormalBorderColor  = "#2d2d2d"
+myFocusedBorderColor = "#cc6633"
 
 myManageHook :: ManageHook
 myManageHook = composeAll
