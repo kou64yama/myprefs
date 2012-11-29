@@ -12,11 +12,14 @@
  '(tool-bar-mode nil)
  '(scroll-bar-mode nil)
  '(visible-bell t)
+ '(js-indent-level 2)
  )
 
 ;;
 (custom-set-faces
- '(default ((t :family "Droid Sans Mono" :height 100)))
+ ;; '(default ((t :family "Droid Sans Mono" :height 100)))
+ ;; '(default ((t :family "Dina" :height 120)))
+ ;; '(default ((t :family "Terminus" :height 120)))
 )
 
 ;;
@@ -57,8 +60,8 @@
 (when (require 'coffee-mode nil t)
   (add-hook 'coffee-mode-hook
             '(lambda ()
-               (set (make-local-variable 'tab-width) 4)
-               (setq coffee-tab-width 4)))
+               (set (make-local-variable 'tab-width) 2)
+               (setq coffee-tab-width 2)))
   )
 
 ;; markdown-mode.

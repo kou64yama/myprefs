@@ -3,9 +3,9 @@
 # VCS
 autoload -U vcs_info
 
-zstyle ':vcs_info:*' max-exports 4
+zstyle ':vcs_info:*' max-exports 5
 zstyle ':vcs_info:*' formats '%s::' '%r' '-%b' ':%S'
-zstyle ':vcs_info:*' actionformats '%s' '%r' '%b' '%S' '%a'
+zstyle ':vcs_info:*' actionformats '%s::' '%r' '-%b' ':%S' '%a'
 
 precmd () {
     psvar=()
