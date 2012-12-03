@@ -1,8 +1,4 @@
 ;;
-(add-to-list 'load-path "~/.emacs.d/site-lisp/coffee-mode")
-(load "~/.emacs.d/site-lisp/tomorrow-theme/tomorrow-night-theme.el")
-
-;;
 (custom-set-variables
  '(backup-inhibited t)
  '(inhibit-startup-screen t)
@@ -11,62 +7,69 @@
  '(menu-bar-mode nil)
  '(tool-bar-mode nil)
  '(scroll-bar-mode nil)
- '(visible-bell t)
- '(js-indent-level 2)
- )
-
-;;
-(custom-set-faces
- ;; '(default ((t :family "Droid Sans Mono" :height 100)))
- ;; '(default ((t :family "Dina" :height 120)))
- ;; '(default ((t :family "Terminus" :height 120)))
 )
 
 ;;
-(global-set-key "\C-h" 'delete-backward-char)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(custom-set-faces
+ ;;'(default ((t :family "Dina")))
+ )
 
-;; mozc
+;; load
+(load "~/.emacs.d/tomorrow-theme/tomorrow-night-theme.el")
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
+
+;; key bind
+(global-set-key "\C-h" 'delete-backword-char)
+
+;; before-save-hook
+(add-hook
+ 'before-save-hook
+ '(lambda ()
+    (delete-trailing-whitespace)
+    ))
+
+;; setting for mozc
 (when (require 'mozc nil t)
-  (custom-set-variables
-   '(default-input-method "japanese-mozc"))
+  (setq default-input-method "japanese-mozc")
   )
 
-;; eshell
+(when (require 'yasnippet nil t)
+  (yas/initialize)
+  (yas/load-directory "~/.emacs.d/snippets")
+)
+
+;; setting for eshell
 (when (require 'eshell nil t)
-  (add-hook 'eshell-mode-hook
-            '(lambda ()
-               (local-set-key "\C-a" 'eshell-bol)
-               (local-set-key "\C-p" 'eshell-previous-matching-input-from-input)
-               (local-set-key "\C-n" 'eshell-next-matching-input-from-input)))
+  (add-hook
+   'eshell-mode-hook
+   '(lambda ()
+      (local-set-key "\C-a" 'eshell-bol)
+      (local-set-key "\C-p" 'eshell-previous-matching-input-from-input)
+      (local-set-key "\C-n" 'eshell-next-matching-input-from-input)
+      ))
   )
 
-;; twittering-mode
-(when (require 'twittering-mode nil t)
-  (custom-set-variables
-   '(twittering-auth-method 'xauth)
-   '(twittering-username "kou64yama")
-   '(twittering-icon-mode t))
-  )
-
-;; haskell-mode
+;; setting for haskell
 (when (require 'haskell-mode nil t)
-  (add-hook 'haskell-mode-hook
-            '(lambda ()
-               (haskell-indentation-mode)))
+  (add-hook
+   'haskell-mode-hook
+   '(lambda ()
+      (haskell-indentation-mode)
+      ))
   )
 
-;; coffee-mode.
-(when (require 'coffee-mode nil t)
-  (add-hook 'coffee-mode-hook
-            '(lambda ()
-               (set (make-local-variable 'tab-width) 2)
-               (setq coffee-tab-width 2)))
-  )
-
-;; markdown-mode.
+;; setting for markdown
 (when (require 'markdown-mode nil t)
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
   )
 
-(add-to-list 'auto-mode-alist '("\\.rc\\'" . shell-script-mode))
+;; setting for coffee
+(when (require 'coffee-mode nil t)
+  (add-hook
+   'coffee-mode-hook
+   '(lambda ()
+      (set (make-local-variable 'tab-width) 2)
+      (setq coffee-tab-width 2)
+      ))
+  )

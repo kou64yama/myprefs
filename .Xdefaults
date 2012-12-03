@@ -2,7 +2,8 @@
 
 !! URxvt
 URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/terminal.svg
-URxvt.font: xft: Droid Sans Mono:size=10, xft: Droid Sans Japanese
+!!URxvt.font: xft: Droid Sans Mono:size=10, xft: Droid Sans Japanese
+URxvt.font: xft: Terminus:size=10, xft: Droid Sans Japanese
 URxvt.scrollBar: false
 
 URxvt.background: #2d2d2d
