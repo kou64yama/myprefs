@@ -11,6 +11,7 @@ tmux
 xdefaults
 xmonad
 zsh
+nano
 ")
 
 declare -A targets_files
@@ -22,6 +23,7 @@ targets_files=(
     ["xdefaults"]=".Xdefaults"
     ["xmonad"]=".xmonad"
     ["zsh"]=".zsh .zshrc .zlogout .zprofile"
+    ["nano"]=".nanorc .nanorc.d"
 )
 
 __main__() {
