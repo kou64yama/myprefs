@@ -7,11 +7,12 @@
  '(menu-bar-mode nil)
  '(tool-bar-mode nil)
  '(scroll-bar-mode nil)
+ '(comment-auto-fill-only-comments t)
 )
 
 ;;
 (custom-set-faces
- ;;'(default ((t :family "Dina")))
+ '(default ((t :family "Droid Sans Mono Slashed")))
  )
 
 ;; load
@@ -19,7 +20,7 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 
 ;; key bind
-(global-set-key "\C-h" 'delete-backword-char)
+(global-set-key "\C-h" 'delete-backward-char)
 
 ;; before-save-hook
 (add-hook
@@ -28,14 +29,34 @@
     (delete-trailing-whitespace)
     ))
 
+;; setting for auto-install
+(when (require 'auto-install nil t)
+  (setq auto-install-directory "~/.emacs.d/site-lisp")
+  ;; (auto-install-update-emacswiki-package-name t)
+  (auto-install-compatibility-setup)
+)
+
 ;; setting for mozc
 (when (require 'mozc nil t)
   (setq default-input-method "japanese-mozc")
   )
 
+;;
+(when (require 'anything nil t)
+)
+
+;; yasnippet
 (when (require 'yasnippet nil t)
   (yas/initialize)
   (yas/load-directory "~/.emacs.d/snippets")
+)
+
+;; for auto-complete
+(when (require 'auto-complete nil t)
+  (setq ac-auto-start 1)
+  (global-auto-complete-mode)
+  (add-to-list 'ac-modes 'coffee-mode)
+  ;; (define-key ac-mode-map (kbd "M-/") 'auto-complete)
 )
 
 ;; setting for eshell
@@ -73,3 +94,8 @@
       (setq coffee-tab-width 2)
       ))
   )
+
+;; setting for scss
+(when (require 'scss-mode nil t)
+  ;; (setq scss-compile-at-save nil)
+)

@@ -1,5 +1,6 @@
 .emacs.d/auto-save-list
 .emacs.d/eshell
+.emacs.d/ac-comphist.dat
 .xmonad/xmonad-*
 .xmonad/xmonad.errors
 .xmonad/xmonad.hi
