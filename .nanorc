@@ -7,6 +7,7 @@ include ~/.nanorc.d/debian.nanorc
 include ~/.nanorc.d/fortran.nanorc
 include ~/.nanorc.d/fstab.nanorc
 include ~/.nanorc.d/gentoo.nanorc
+include ~/.nanorc.d/git.nanorc
 include ~/.nanorc.d/groff.nanorc
 include ~/.nanorc.d/html.nanorc
 include ~/.nanorc.d/java.nanorc
