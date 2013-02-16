@@ -1,8 +1,0 @@
-# -*- mode: conf; -*-
-
-#gtk-theme-name          = "Unity"
-#gtk-icon-theme-name     = "Gion"
-gtk-theme-name          = "Unity"
-gtk-icon-theme-name     = "Faenza"
-
-
