@@ -1,0 +1,11 @@
+2013-02-19  Koji Yamada  <kou64yama@gmail.com>
+
+	* ChangeLog: Create this file.
+
+	* LICESNE: About the license.
+
+	* Makefile: Builder and installer.
+
+	* README.md: Read me.
+
+	* emacs.d/init.el: Config file for Emacs.
