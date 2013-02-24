@@ -1,0 +1,17 @@
+## Here is an example for fstab
+##
+syntax "fstab" "/etc/fstab"
+
+## Mountpoint
+color brightblue	"^[A-Za-z0-9/=-]+[[:space:]]+[A-Za-z0-9/]+"
+
+## Filesystem
+color green		"^[A-Za-z0-9/=-]+[[:space:]]+"
+color white		"^[[:space:]]*(UUID|LABEL)="
+color yellow		"^[[:space:]]*(UUID|LABEL)"
+
+## Type
+color magenta		"[[:space:]]+(tmpfs|swap|btrfs|vfat)[[:space:]]+"
+
+## Comment
+color cyan		"#.*$"
