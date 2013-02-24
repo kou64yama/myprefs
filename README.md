@@ -1,4 +1,4 @@
-myprefs
+MyPrefs
 =======
 
 Usage
@@ -18,3 +18,9 @@ Run this, to install all packages.
 Run this, to install the specified package. (ex. emacs)
 
     make install_emacs
+
+Packages
+--------
+
+ * emacs
+ * nano

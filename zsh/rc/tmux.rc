@@ -1,0 +1,10 @@
+# -*- shell-script -*-
+# MyPrefs
+# https://github.com/kou64yama/myprefs
+# Copyright 2013 Koji YAMADA; Licensed MIT
+
+# show sessions.
+which tmux > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    tmux list-sessions 2> /dev/null
+fi
