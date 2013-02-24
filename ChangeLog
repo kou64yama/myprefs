@@ -1,4 +1,14 @@
-2013-02-19  Koji Yamada  <kou64yama@gmail.com>
+2013-02-25  Koji YAMADA  <kou64yama@gmail.com>
+
+	* nanorc: Added.
+
+	* nanorc.d: Added.
+
+	* zshrc: Added.
+
+	* zsh: Added.
+
+2013-02-19  Koji YAMADA  <kou64yama@gmail.com>
 
 	* ChangeLog: Create this file.
 
