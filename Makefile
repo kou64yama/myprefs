@@ -18,6 +18,7 @@ install_emacs: emacs
 
 nano:
 install_nano: nano
+	install -m 0644 nanorc $(PREFIX)/.nanorc
 	install -m 0755 -d $(PREFIX)/.nanorc.d
 	install -m 0644 nanorc.d/*.nanorc $(PREFIX)/.nanorc.d
 
