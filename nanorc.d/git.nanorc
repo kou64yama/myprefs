@@ -1,0 +1,15 @@
+# MyPrefs
+# https://github.com/kou64yama/myprefs
+# Copyright 2013 Koji YAMADA; Licensed MIT
+
+syntax "git" "COMMIT_EDITMSG|TAG_EDITMSG"
+
+color white ".*"
+
+color brightblack "^#.*"
+color white       "#[[:space:]](deleted|modified|new file|renamed):[[:space:]].*"
+color red         "#[[:space:]]deleted:"
+color green       "#[[:space:]]modified:"
+color brightgreen "#[[:space:]]new file:"
+color brightblue  "#[[:space:]]renamed:"
+

@@ -1,29 +1,22 @@
-# Copyright (c) 2013 Koji Yamada
-#
-# Permission is hereby granted, free of charge, to any person
-# obtaining a copy of this software and associated documentation files
-# (the "Software"), to deal in the Software without restriction,
-# including without limitation the rights to use, copy, modify, merge,
-# publish, distribute, sublicense, and/or sell copies of the Software,
-# and to permit persons to whom the Software is furnished to do so,
-# subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be
-# included in all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
-# BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
-# ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-# CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+# MyPrefs
+# https://github.com/kou64yama/myprefs
+# Copyright 2013 Koji YAMADA; Licensed MIT.
 
-.PHONY: usage install emacs
+.PHONY: usage emacs install_emacs nano install_nano
+
+PREFIX = $(HOME)
 
 usage:
-	@echo "Usage: make [usage|install|emacs]"
-install: emacs
+	@echo "Usage: make (all|install|<package_name>|install_<package_name>)"
+
+all: emacs nano
+install: install_emacs install_nano
+
 emacs:
-	install -m 0644 emacs.d/init.el $(HOME)/.emacs.d
+install_emacs: emacs
+	install -m 0644 emacs.d/init.el $(PREFIX)/.emacs.d/init.el
+
+nano:
+install_nano: nano
+	install -m 0755 -d $(PREFIX)/.nanorc.d
+	install -m 0644 nanorc.d/*.nanorc $(PREFIX)/.nanorc.d
