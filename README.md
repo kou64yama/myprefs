@@ -24,3 +24,4 @@ Packages
 
  * emacs
  * nano
+ * zsh
