@@ -4,9 +4,7 @@ MyPrefs
 Usage
 -----
 
-~~~~ {.bash}
-make (all|install|<package_name>|install_<package_name>)
-~~~~
+    make (all|install|<package_name>|install_<package_name>)
 
 How to install
 --------------

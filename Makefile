@@ -14,7 +14,8 @@ install: install_emacs install_nano install_zsh
 
 emacs:
 install_emacs: emacs
-	install -m 0644 emacs.d/init.el $(PREFIX)/.emacs.d/init.el
+	install -m 0755 -d $(PREFIX)/.emacs.d
+	install -m 0644 emacs.d/init.el $(PREFIX)/.emacs.d
 
 nano:
 install_nano: nano
