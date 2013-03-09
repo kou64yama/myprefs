@@ -37,8 +37,11 @@ install_zsh: zsh
 
 xmonad:
 install_xmonad: xmonad
-	install -m 0755 -d $(PREFIX)/.xmonad
+	install -m 0755 -d $(PREFIX)/.xmonad{,/bin,/hooks,/icons}
 	install -m 0644 xmonad/xmonad.hs $(PREFIX)/.xmonad
+	install -m 0755 xmonad/bin/* $(PREFIX)/.xmonad/bin
+	install -m 0755 xmonad/hooks/* $(PREFIX)/.xmonad/hooks
+	install -m 0644 xmonad/icons/* $(PREFIX)/.xmonad/icons
 
 xdefaults:
 install_xdefaults: xdefaults
