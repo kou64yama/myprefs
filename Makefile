@@ -32,8 +32,8 @@ install_nano: nano
 zsh:
 install_zsh: zsh
 	install -m 0644 zshrc $(PREFIX)/.zshrc
-	install -m 0755 -d $(PREFIX)/.zsh/rc
-	install -m 0644 zsh/rc/* $(PREFIX)/.zsh/rc
+	install -m 0755 -d $(PREFIX)/.zsh/functions
+	install -m 0644 zsh/functions/* $(PREFIX)/.zsh/functions
 
 xmonad:
 install_xmonad: xmonad
