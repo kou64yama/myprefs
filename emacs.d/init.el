@@ -1,6 +1,6 @@
-;; MyPrefs
-;; https://github.com/kou64yama/myprefs
-;; Copyright 2013 Koji YAMADA; Licensed MIT.
+;; Copyright (c) 2013 YAMADA Koji; Licensed MIT.
+
+(require 'cl)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -24,9 +24,43 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t :family "DejaVu Sans Mono" :height 120
-               :foreground "#cccccc" :background "#222222")))
+ '(default ((t :family "Ricty" :height 150)))
  )
+
+(defun* my-color-theme (&key (black "black") (red "red")
+                             (green "green") (yellow "yellow")
+                             (blue "blue") (magenta "magenta")
+                             (cyan "cyan") (white "white"))
+  (set-face-background 'default black)
+  (set-face-foreground 'default white)
+  (set-face-foreground 'font-lock-warning-face red)
+  (set-face-foreground 'font-lock-function-name-face blue)
+  (set-face-foreground 'font-lock-variable-name-face cyan)
+  (set-face-foreground 'font-lock-keyword-face magenta)
+  (set-face-foreground 'font-lock-comment-face yellow)
+  (set-face-foreground 'font-lock-comment-delimiter-face yellow)
+  (set-face-foreground 'font-lock-type-face green)
+  (set-face-foreground 'font-lock-constant-face blue)
+  (set-face-foreground 'font-lock-builtin-face magenta)
+  (set-face-foreground 'font-lock-preprocessor-face blue)
+  (set-face-foreground 'font-lock-string-face red)
+  (set-face-foreground 'font-lock-doc-face yellow)
+  (set-face-attribute 'font-lock-warning-face nil :underline t)
+  (set-face-attribute 'font-lock-keyword-face nil :bold t)
+  (set-face-attribute 'font-lock-comment-face nil :italic t)
+  (set-face-attribute 'font-lock-comment-delimiter-face nil :italic t)
+  (set-face-attribute 'font-lock-type-face nil :bold t)
+  (set-face-attribute 'font-lock-constant-face nil :italic t :bold t)
+  (set-face-attribute 'font-lock-builtin-face nil :bold t)
+  (set-face-attribute 'font-lock-preprocessor-face nil :bold t)
+  (set-face-attribute 'font-lock-doc-face nil :bold t)
+  )
+
+(if (not window-system) (my-color-theme)
+  (my-color-theme :black "#222222" :red "#cc3333"
+                  :green "#44cc44" :yellow "#cccc33"
+                  :blue "#6666cc" :magenta "#cc44cc"
+                  :cyan "#44cccc" :white "#cccccc"))
 
 (global-set-key "\C-h" 'delete-backward-char)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
