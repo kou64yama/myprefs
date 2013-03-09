@@ -57,10 +57,10 @@
   )
 
 (if (not window-system) (my-color-theme)
-  (my-color-theme :black "#222222" :red "#cc3333"
-                  :green "#44cc44" :yellow "#cccc33"
-                  :blue "#6666cc" :magenta "#cc44cc"
-                  :cyan "#44cccc" :white "#cccccc"))
+  (my-color-theme :black "#222222" :red "#cc6666"
+                  :green "#66cc66" :yellow "#cccc66"
+                  :blue "#6666cc" :magenta "#cc66cc"
+                  :cyan "#66cccc" :white "#cccccc"))
 
 (global-set-key "\C-h" 'delete-backward-char)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

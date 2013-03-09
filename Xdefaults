@@ -5,7 +5,7 @@
 ! URxvt
 !
 
-URxvt.font: xft:Ubuntu Mono:size=14, xft:TakaoExGothic:size=12
+URxvt.font: xft:Droid Sans Mono Slashed:size=12, xft:Droid Japanese:size=11
 URxvt.scrollBar: False
 
 ! black
@@ -13,28 +13,28 @@ URxvt.color0:  #222222
 URxvt.color8:  #333333
 
 ! red
-URxvt.color1:  #cc3333
-URxvt.color9:  #dd4444
+URxvt.color1:  #cc6666
+URxvt.color9:  #dd7777
 
 ! green
-URxvt.color2:  #33cc33
-URxvt.color10: #44dd44
+URxvt.color2:  #66cc66
+URxvt.color10: #77dd77
 
 ! yellow
-URxvt.color3:  #cccc33
-URxvt.color11: #dddd44
+URxvt.color3:  #cccc66
+URxvt.color11: #dddd77
 
 ! blue
-URxvt.color4:  #4444cc
-URxvt.color12: #5555dd
+URxvt.color4:  #6666cc
+URxvt.color12: #7777dd
 
 ! magenta
-URxvt.color5:  #cc44cc
-URxvt.color13: #dd55dd
+URxvt.color5:  #cc66cc
+URxvt.color13: #dd77dd
 
 ! cyan
-URxvt.color6:  #44cccc
-URxvt.color14: #55dddd
+URxvt.color6:  #66cccc
+URxvt.color14: #77dddd
 
 ! white
 URxvt.color7:  #cccccc
