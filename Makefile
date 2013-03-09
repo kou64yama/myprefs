@@ -7,16 +7,17 @@ emacs install_emacs \
 nano install_nano \
 zsh install_zsh \
 xmonad install_xmonad \
-xdefaults install_xdefaults
+xdefaults install_xdefaults \
+tmux install_tmux
 
 PREFIX = $(HOME)
 
 usage:
 	@echo "Usage: make (all|install|<package_name>|install_<package_name>)"
 
-all: emacs nano zsh xmonad xdefaults
+all: emacs nano zsh xmonad xdefaults tmux
 install: install_emacs install_nano install_zsh install_xmonad \
-install_xdefaults
+install_xdefaults install_tmux
 
 emacs:
 install_emacs: emacs
@@ -46,3 +47,7 @@ install_xmonad: xmonad
 xdefaults:
 install_xdefaults: xdefaults
 	install -m 0644 Xdefaults $(PREFIX)/.Xdefaults
+
+tmux:
+install_tmux: tmux
+	install -m 0644 tmux.conf $(PREFIX)/.tmux.conf
