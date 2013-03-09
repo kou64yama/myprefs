@@ -1,16 +1,18 @@
 # -*- shell-script -*-
 # Copyright (c) 2013 YAMADA Koji; Licensed MIT
 
-if [ $USER = 'root' ]; then
-    PROMPT='%F{red}%n %#%f '
-else
-    PROMPT='%F{gree}%n %#%f '
-fi
-
-PROMPT2='%F{blue}%_>%f '
-RPROMPT='[%F{green}%n@%M%f:%F{blue}%~%f]'
-
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
+local date='%F{blue}%D %T%f'
+
+if [ $USER = 'root' ]; then
+    PROMPT='%F{red}%n %#%f '
+else
+    PROMPT='%F{green}%n %#%f '
+fi
+
+RPROMPT='['$date']'
+PROMPT2='%F{blue}%_>%f '
