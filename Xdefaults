@@ -1,5 +1,45 @@
-!-*- conf-xdefaults -*-
+! -*- conf-xdefaults -*-
+! Copyright (c) 2013 YAMADA Koji; Licensed MIT
 
-URxvt.font: xft:DejaVu Sans Mono:size=12
+!
+! URxvt
+!
+
+URxvt.font: xft:Ubuntu Mono:size=14, xft:TakaoExGothic:size=12
+URxvt.scrollBar: False
+
+! black
+URxvt.color0:  #222222
+URxvt.color8:  #333333
+
+! red
+URxvt.color1:  #cc3333
+URxvt.color9:  #dd4444
+
+! green
+URxvt.color2:  #33cc33
+URxvt.color10: #44dd44
+
+! yellow
+URxvt.color3:  #cccc33
+URxvt.color11: #dddd44
+
+! blue
+URxvt.color4:  #4444cc
+URxvt.color12: #5555dd
+
+! magenta
+URxvt.color5:  #cc44cc
+URxvt.color13: #dd55dd
+
+! cyan
+URxvt.color6:  #44cccc
+URxvt.color14: #55dddd
+
+! white
+URxvt.color7:  #cccccc
+URxvt.color15: #dddddd
+
+! foreground and background
 URxvt.foreground: #cccccc
 URxvt.background: #222222

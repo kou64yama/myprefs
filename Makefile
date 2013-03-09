@@ -39,3 +39,7 @@ xmonad:
 install_xmonad: xmonad
 	install -m 0755 -d $(PREFIX)/.xmonad
 	install -m 0644 xmonad/xmonad.hs $(PREFIX)/.xmonad
+
+xdefaults:
+install_xdefaults: xdefaults
+	install -m 0644 Xdefaults $(PREFIX)/.Xdefaults
