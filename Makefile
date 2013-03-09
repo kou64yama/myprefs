@@ -2,15 +2,21 @@
 # https://github.com/kou64yama/myprefs
 # Copyright 2013 Koji YAMADA; Licensed MIT.
 
-.PHONY: usage emacs install_emacs nano install_nano zsh install_zsh
+.PHONY: usage \
+emacs install_emacs \
+nano install_nano \
+zsh install_zsh \
+xmonad install_xmonad \
+xdefaults install_xdefaults
 
 PREFIX = $(HOME)
 
 usage:
 	@echo "Usage: make (all|install|<package_name>|install_<package_name>)"
 
-all: emacs nano zsh
-install: install_emacs install_nano install_zsh
+all: emacs nano zsh xmonad xdefaults
+install: install_emacs install_nano install_zsh install_xmonad \
+install_xdefaults
 
 emacs:
 install_emacs: emacs
