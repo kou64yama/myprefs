@@ -23,3 +23,6 @@ Packages
  * emacs
  * nano
  * zsh
+ * xdefault
+ * xmonad
+ * tmux
