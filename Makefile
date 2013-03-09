@@ -28,3 +28,8 @@ install_zsh: zsh
 	install -m 0644 zshrc $(PREFIX)/.zshrc
 	install -m 0755 -d $(PREFIX)/.zsh/rc
 	install -m 0644 zsh/rc/* $(PREFIX)/.zsh/rc
+
+xmonad:
+install_xmonad: xmonad
+	install -m 0755 -d $(PREFIX)/.xmonad
+	install -m 0644 xmonad/xmonad.hs $(PREFIX)/.xmonad
