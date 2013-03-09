@@ -1,0 +1,5 @@
+!-*- conf-xdefaults -*-
+
+URxvt.font: xft:DejaVu Sans Mono:size=12
+URxvt.foreground: #cccccc
+URxvt.background: #222222
