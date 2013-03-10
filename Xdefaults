@@ -10,31 +10,31 @@ URxvt.scrollBar: False
 
 ! black
 URxvt.color0:  #222222
-URxvt.color8:  #333333
+URxvt.color8:  #444444
 
 ! red
-URxvt.color1:  #cc6666
-URxvt.color9:  #dd7777
+URxvt.color1:  #cc8888
+URxvt.color9:  #dd9999
 
 ! green
-URxvt.color2:  #66cc66
-URxvt.color10: #77dd77
+URxvt.color2:  #88cc88
+URxvt.color10: #99dd99
 
 ! yellow
-URxvt.color3:  #cccc66
-URxvt.color11: #dddd77
+URxvt.color3:  #cccc88
+URxvt.color11: #dddd99
 
 ! blue
-URxvt.color4:  #6666cc
-URxvt.color12: #7777dd
+URxvt.color4:  #8888cc
+URxvt.color12: #9999dd
 
 ! magenta
-URxvt.color5:  #cc66cc
-URxvt.color13: #dd77dd
+URxvt.color5:  #cc88cc
+URxvt.color13: #dd99dd
 
 ! cyan
-URxvt.color6:  #66cccc
-URxvt.color14: #77dddd
+URxvt.color6:  #88cccc
+URxvt.color14: #99dddd
 
 ! white
 URxvt.color7:  #cccccc

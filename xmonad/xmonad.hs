@@ -53,7 +53,7 @@ main = xmonad =<< dzenWithPP myDzenPP defaultConfig
     myStartupHook :: X ()
     myStartupHook = spawn "~/.xmonad/hooks/startup.sh"
     myLayoutHook = smartBorders $ toggleLayouts Full (tall ||| mirror)
-      where tall = Tall 1 0.1 0.6
+      where tall = Tall 1 0.1 0.5
             mirror = Mirror tall
     myTerminal :: String
     myTerminal = "urxvt"
