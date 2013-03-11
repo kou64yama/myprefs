@@ -45,5 +45,5 @@ precmd () {
 
 if [[ $TERM =~ '^(linux|screen|xterm.*|.*color|rxvt.*)$' ]]; then
     autoload -U myprompt && myprompt
-    PROMPT='%F{yellow}%1v%F{green}%M%F{blue}%2v%F{magenta}%3v%F{cyan}%4v%F{red}%5v%f'$'\n'$PROMPT
+    PROMPT='%F{yellow}%1v%M%F{blue}%2v%F{magenta}%3v%F{cyan}%4v%F{red}%5v%f'$'\n'$PROMPT
 fi
