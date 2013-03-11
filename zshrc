@@ -2,19 +2,39 @@
 # Copyright (c) 2013 YAMADA Koji; Licensed MIT
 
 fpath=($HOME/.zsh/functions $fpath)
-HISTFILE=$HOME/.zhistory HISTSIZE=1024 SAVEHIST=8192
 
 autoload -U compinit && compinit
 autoload -U history-search-end
 autoload -U vcs_info
-bindkey -e
 
-# history search
+# options
+setopt CORRECT
+setopt ALWAYS_TO_END
+setopt NOTIFY
+setopt NOBEEP
+setopt AUTOLIST
+setopt AUTOCD
+setopt PRINT_EIGHT_BIT
+
+# completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:processes' command 'ps -au$USER'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=36=31'
+zstyle ':completion:*' completer _expand _complete _ignored
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*:descriptions' format '%U%F{yellow}%d%f%u'
+
+# history
+HISTFILE=$HOME/.zhistory
+HISTSIZE=1024
+SAVEHIST=8192
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt share_history
 zle -N history-beginning-search-forward-end history-search-end
 zle -N history-beginning-search-backward-end history-search-end
-
-bindkey '^N' history-beginning-search-forward-end
-bindkey '^P' history-beginning-search-backward-end
 
 # prompt
 zstyle ':vcs_info:*' max-exports 5
@@ -46,4 +66,15 @@ precmd () {
 if [[ $TERM =~ '^(linux|screen|xterm.*|.*color|rxvt.*)$' ]]; then
     autoload -U myprompt && myprompt
     PROMPT='%F{yellow}%1v%M%F{blue}%2v%F{magenta}%3v%F{cyan}%4v%F{red}%5v%f'$'\n'$PROMPT
+fi
+
+# keybind
+bindkey -e
+bindkey '^N' history-beginning-search-forward-end
+bindkey '^P' history-beginning-search-backward-end
+
+# tmux
+which tmux > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    tmux list-sessions 2> /dev/null
 fi
