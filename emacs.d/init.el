@@ -27,7 +27,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(global-whitespace-mode t)
  '(global-linum-mode t)
  '(linum-number-mode t)
  '(column-number-mode t)
@@ -68,6 +67,14 @@
   (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
   (package-initialize)
 )
+
+(when (require 'whitespace nil t)
+  (custom-set-variables
+   '(global-whitespace-mode t)
+   '(whitespace-style '(face tabs tab-mark spaces space-mark))
+   )
+)
+
 
 ;; anything
 ;;
