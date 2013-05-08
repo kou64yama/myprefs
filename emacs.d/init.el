@@ -1,23 +1,45 @@
-;; Copyright (c) 2013 YAMADA Koji; Licensed MIT.
+;; -*- mode: emacs-lisp; indent-tabs-mode: nil; -*-
 
-(require 'cl)
+;; Copyright (c) 2013 YAMADA Koji
+;;
+;; Permission  is  hereby  granted,  free of  charge,  to  any  person
+;; obtaining  a copy  of  this software  and associated  documentation
+;; files   (the  "Software"),   to  deal   in  the   Software  without
+;; restriction, including without limitation  the rights to use, copy,
+;; modify, merge, publish, distribute,  sublicense, and/or sell copies
+;; of the  Software, and  to permit  persons to  whom the  Software is
+;; furnished to do so, subject to the following conditions:
+;;
+;; The  above copyright  notice and  this permission  notice shall  be
+;; included in all copies or substantial portions of the Software.
+;;
+;; THE SOFTWARE  IS PROVIDED  "AS IS", WITHOUT  WARRANTY OF  ANY KIND,
+;; EXPRESS OR IMPLIED, INCLUDING BUT  NOT LIMITED TO THE WARRANTIES OF
+;; MERCHANTABILITY,   FITNESS    FOR   A   PARTICULAR    PURPOSE   AND
+;; NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+;; BE LIABLE FOR ANY CLAIM, DAMAGES  OR OTHER LIABILITY, WHETHER IN AN
+;; ACTION OF CONTRACT,  TORT OR OTHERWISE, ARISING FROM, OUT  OF OR IN
+;; CONNECTION WITH  THE SOFTWARE OR THE  USE OR OTHER DEALINGS  IN THE
+;; SOFTWARE.
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(global-whitespace-mode t)
+ '(global-linum-mode t)
  '(linum-number-mode t)
  '(column-number-mode t)
- '(tool-bar-mode nil)
- '(menu-bar-mode nil)
- '(scroll-bar-mode nil)
- '(visible-bell t)
- '(inhibit-startup-screen t)
- '(backup-inhibited t)
- '(indent-tabs-mode nil)
  '(size-indication-mode t)
- )
+ '(menu-bar-mode nil)
+ '(tool-bar-mode nil)
+ '(scroll-bar-mode nil)
+ '(indent-tabs-mode nil)
+ '(visible-bell nil)
+ '(backup-inhibited t)
+ '(inhibit-startup-screen t)
+)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -27,67 +49,66 @@
  '(default ((t :family "Droid Sans Mono Slashed" :height 120)))
  )
 
-(defun* my-color-theme (&key (black "black") (red "red")
-                             (green "green") (yellow "yellow")
-                             (blue "blue") (magenta "magenta")
-                             (cyan "cyan") (white "white"))
-  (set-face-background 'default black)
-  (set-face-foreground 'default white)
-  (set-face-foreground 'font-lock-warning-face red)
-  (set-face-foreground 'font-lock-function-name-face blue)
-  (set-face-foreground 'font-lock-variable-name-face cyan)
-  (set-face-foreground 'font-lock-keyword-face magenta)
-  (set-face-foreground 'font-lock-comment-face yellow)
-  (set-face-foreground 'font-lock-comment-delimiter-face yellow)
-  (set-face-foreground 'font-lock-type-face green)
-  (set-face-foreground 'font-lock-constant-face blue)
-  (set-face-foreground 'font-lock-builtin-face magenta)
-  (set-face-foreground 'font-lock-preprocessor-face blue)
-  (set-face-foreground 'font-lock-string-face red)
-  (set-face-foreground 'font-lock-doc-face yellow)
-  (set-face-attribute 'font-lock-warning-face nil :underline t)
-  (set-face-attribute 'font-lock-keyword-face nil :bold t)
-  (set-face-attribute 'font-lock-comment-face nil :italic t)
-  (set-face-attribute 'font-lock-comment-delimiter-face nil :italic t)
-  (set-face-attribute 'font-lock-type-face nil :bold t)
-  (set-face-attribute 'font-lock-constant-face nil :italic t :bold t)
-  (set-face-attribute 'font-lock-builtin-face nil :bold t)
-  (set-face-attribute 'font-lock-preprocessor-face nil :bold t)
-  (set-face-attribute 'font-lock-doc-face nil :bold t)
+;; theme
+(load-theme 'tango-dark t)
+
+;; before-save-hook
+(add-hook 'before-save-hook
+          '(lambda ()
+             "Before Save Hook"
+             (delete-trailing-whitespace)
+             ))
+
+;; keybind
+(define-key global-map (kbd "C-h") 'delete-backward-char)
+
+;; package
+(when (require 'package nil t)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+  (package-initialize)
+)
+
+;; anything
+;;
+;; (package-install 'anything)
+;; (package-install 'anything-config)
+;; (package-install 'anything-match-plugin)
+;; (package-install 'anything-complete)
+(when (require 'anything nil t)
+  (require 'anything-config nil t)
+  (require 'anything-startup nil t)
+  (anything-read-string-mode 1)
   )
 
-(if (not window-system) (my-color-theme)
-  (my-color-theme :black "#222222" :red "#cc8888"
-                  :green "#88cc88" :yellow "#cccc88"
-                  :blue "#8888cc" :magenta "#cc88cc"
-                  :cyan "#88cccc" :white "#cccccc"))
-
-(global-set-key "\C-h" 'delete-backward-char)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-(when (require 'eshell nil t)
-  ;; Setup for eshell.
-  (add-hook 'eshell-mode-hook
-            '(lambda ()
-               (local-set-key "\C-a" 'eshell-bol)
-               (local-set-key "\C-p" 'eshell-previous-matching-input-from-input)
-               (local-set-key "\C-n" 'eshell-next-matching-input-from-input)
-               ))
+;; auto-complete
+;;
+;; (package-install 'auto-complete)
+(when (require 'auto-complete nil t)
+  (custom-set-variables '(global-auto-complete-mode t))
   )
 
-(when (require 'mozc nil t)
-  ;; Setup for mozc.
+;; yasnippet
+;;
+;; (package-install 'yasnippet)
+;; (package-install 'yasnippet-bundle)
+(when (require 'yasnippet-config nil t)
+  (yas-global-mode 1)
+  )
+
+;; screenshot
+;;
+;; (package-install 'screenshot)
+(when (require 'screenshot nil t)
   (custom-set-variables
-   '(default-input-method "japanese-mozc"))
+   '(screenshot-schemes '("local" :dir "~/"))
+   '(screenshot-default-scheme "local"))
   )
 
-(when (require 'haskell-mode nil t)
-  ;; Setup for haskell-mode.
-  (add-hook 'haskell-mode-hook
-            '(lambda () (haskell-indentation-mode)))
-  )
-
-(when (require 'markdown-mode nil t)
-  ;; Setup for markdown-mode.
-  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-  )
+;; (package-install 'rainbow-mode)
+;; (package-install 'php-mode)
+;; (package-install 'haskell-mode)
+;; (package-install 'coffee-mode)
+;; (package-install 'sass-mode)
+;; (package-install 'scss-mode)
+;; (package-install 'less-css-mode)
