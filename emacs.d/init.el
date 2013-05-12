@@ -27,29 +27,29 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(global-linum-mode t)
- '(linum-number-mode t)
+ '(backup-inhibited t t)
  '(column-number-mode t)
- '(size-indication-mode t)
- '(menu-bar-mode nil)
- '(tool-bar-mode nil)
- '(scroll-bar-mode nil)
+ '(global-linum-mode t)
  '(indent-tabs-mode nil)
- '(visible-bell nil)
- '(backup-inhibited t)
  '(inhibit-startup-screen t)
-)
+ '(linum-number-mode t)
+ '(menu-bar-mode nil)
+ '(scroll-bar-mode nil)
+ '(size-indication-mode t)
+ '(tool-bar-mode nil)
+ '(visible-bell nil)
+ )
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t :family "Droid Sans Mono Slashed" :height 120)))
+ '(default ((t :family "Ubuntu Mono" :height 140)))
  )
 
 ;; theme
-(load-theme 'tango-dark t)
+(load-theme 'wombat t)
 
 ;; before-save-hook
 (add-hook 'before-save-hook
@@ -61,61 +61,81 @@
 ;; keybind
 (define-key global-map (kbd "C-h") 'delete-backward-char)
 
-;; package
-(when (require 'package nil t)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-  (package-initialize)
-)
 
-(when (require 'whitespace nil t)
+(defun require-install (p)
+  (or (require p nil t) (not (package-install p)))
+  )
+
+(when (require 'server nil t)
+  (unless (server-running-p) (server-start))
+  )
+
+(when (require 'package nil t)
+  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+  (package-initialize)
+  )
+
+(when (require-install 'popwin))
+
+(when (require-install 'helm)
+  (require 'helm-config nil t)
+  ;;(define-key global-map (kbd "M-x") 'helm-M-x)
+  ;;(define-key global-map (kbd "C-x C-f") 'helm-find-files)
+  )
+
+(when (require-install 'whitespace)
   (custom-set-variables
    '(global-whitespace-mode t)
    '(whitespace-style '(face tabs tab-mark spaces space-mark))
    )
-)
-
-
-;; anything
-;;
-;; (package-install 'anything)
-;; (package-install 'anything-config)
-;; (package-install 'anything-match-plugin)
-;; (package-install 'anything-complete)
-(when (require 'anything nil t)
-  (require 'anything-config nil t)
-  (require 'anything-startup nil t)
-  (anything-read-string-mode 1)
+  (custom-set-faces
+   '(whitespace-space ((((class color) (background dark))
+                        :foreground "#444"
+                        :background nil
+                        )))
+   '(whitespace-tab ((((class color) (background dark))
+                      :foreground "#444"
+                      :background "#c00"
+                      )))
+   )
   )
 
-;; auto-complete
-;;
-;; (package-install 'auto-complete)
-(when (require 'auto-complete nil t)
+(when (require-install 'auto-complete)
   (custom-set-variables '(global-auto-complete-mode t))
   )
 
-;; yasnippet
-;;
-;; (package-install 'yasnippet)
-;; (package-install 'yasnippet-bundle)
-(when (require 'yasnippet-config nil t)
+(when (require-install 'yasnippet)
   (yas-global-mode 1)
   )
 
-;; screenshot
-;;
-;; (package-install 'screenshot)
-(when (require 'screenshot nil t)
-  (custom-set-variables
-   '(screenshot-schemes '("local" :dir "~/"))
-   '(screenshot-default-scheme "local"))
+(when (require-install 'mark-multiple)
+  (define-key global-map (kbd "C-<") 'mark-previous-like-this)
+  (define-key global-map (kbd "C->") 'mark-next-like-this)
+  (define-key global-map (kbd "C-*") 'mark-all-like-this)
   )
 
-;; (package-install 'rainbow-mode)
-;; (package-install 'php-mode)
-;; (package-install 'haskell-mode)
-;; (package-install 'coffee-mode)
-;; (package-install 'sass-mode)
-;; (package-install 'scss-mode)
-;; (package-install 'less-css-mode)
+(when (require-install 'expand-region)
+  (define-key global-map (kbd "C-@") 'er/expand-region)
+  (define-key global-map (kbd "C-M-@") 'er/contract-region)
+  )
+
+(when (require-install 'coffee-mode)
+  (custom-set-variables '(coffee-tab-width 2))
+  )
+
+(when (require-install 'markdown-mode)
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.txt\\'" . markdown-mode))
+  )
+
+(require-install 'rainbow-mode)
+(require-install 'apache-mode)
+(require-install 'php-mode)
+(require-install 'haskell-mode)
+(require-install 'sass-mode)
+(require-install 'scss-mode)
+(require-install 'git-commit-mode)
+(require-install 'gitconfig-mode)
+(require-install 'magit)
